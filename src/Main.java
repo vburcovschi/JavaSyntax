@@ -7,8 +7,8 @@ import java.nio.file.Path;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         BufferedReader keypad = new BufferedReader(new InputStreamReader(System.in));
-        String outFilename = "";
-        String inFilename = "";
+        String outFilename;
+        String inFilename;
         int key;
         String value = "";
         System.out.println("Привет! Ты работаешь с программой для шифрования и расшифрования файлов.");
@@ -87,7 +87,7 @@ public class Main {
             }
         }
     }
-    static String formatPath(String path){
+    private static String formatPath(String path){
         char[] array = path.toCharArray();
         String tmp = "";
         for (char ch: array)

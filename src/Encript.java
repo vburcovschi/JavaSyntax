@@ -21,7 +21,7 @@ public class Encript {
                 texts.add(encodeLine);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("ERROR: " + e.getMessage());;
+            System.out.println("ERROR: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("ERROR:" +e.getMessage());
         }
@@ -40,8 +40,8 @@ public class Encript {
 
     }
 
-    static char encodeChar(char ch, int key){
-        int ascii = (int) ch;
+    private static char encodeChar(char ch, int key){
+        int ascii = ch;
         ascii +=key;
         return (char) ascii;
     }

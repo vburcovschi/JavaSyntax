@@ -29,7 +29,7 @@ public class Bruteforce {
         return maxStatKey;
     }
 
-    static int checkFileAfterDecription(String decodedFile) {
+    private static int checkFileAfterDecription(String decodedFile) {
         final String[] CRITERIA = {", ",". ",": ","! "," - "," — "};
         int totalRating = 0;
         int foundCount = 0;
