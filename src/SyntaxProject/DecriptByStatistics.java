@@ -10,16 +10,16 @@ import java.util.Map;
 
 public class DecriptByStatistics {
     public static void decriptFileByStatisctics(LinkedHashMap<Character, Character> corelation, String encriptedFile) {
-        String encriptedTExt= readFileContent(encriptedFile);
+        String encriptedTExt = readFileContent(encriptedFile);
         StringBuilder decriptedText = new StringBuilder();
         for (int i = 0; i < encriptedTExt.length(); i++)
-            for (Map.Entry iter: corelation.entrySet()) {
+            for (Map.Entry iter : corelation.entrySet()) {
                 Character cor = (Character) iter.getKey();
                 Character enc = encriptedTExt.charAt(i);
                 if (iter.getKey().equals(encriptedTExt.charAt(i)))
                     decriptedText.append(iter.getValue());
             }
-        writeFileContent(decriptedText.toString(),encriptedFile);
+        writeFileContent(decriptedText.toString(), encriptedFile);
     }
 
     public static LinkedHashMap<Character, Character> getChipher(LinkedHashMap<Character, Integer> statisticMostra, LinkedHashMap<Character, Integer> statisticEncripted) {
@@ -28,7 +28,7 @@ public class DecriptByStatistics {
         LinkedList<Character> mostraList = new LinkedList<>(statisticMostra.keySet());
         LinkedList<Character> encriptList = new LinkedList<>(statisticEncripted.keySet());
         for (int i = 0; i < length; i++) {
-            corelation.put(encriptList.get(i),mostraList.get(i));
+            corelation.put(encriptList.get(i), mostraList.get(i));
         }
         return corelation;
     }
@@ -101,7 +101,7 @@ public class DecriptByStatistics {
         String newFileName = fileNameBeforeDot + "-from stat analiz" + fileNameAfterDot;
         try {
             Files.writeString(Path.of(newFileName), text);
-            System.out.println("Результат расшифровки по методу статисчического анализа раположен в файле: "+newFileName);
+            System.out.println("Результат расшифровки по методу статисчического анализа раположен в файле: " + newFileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
