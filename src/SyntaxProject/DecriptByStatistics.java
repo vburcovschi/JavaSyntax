@@ -1,3 +1,5 @@
+package SyntaxProject;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class DecriptByStatistics {
-    public static void decriptFile(LinkedHashMap<Character, Character> corelation, String encriptedFile) {
+    public static void decriptFileByStatisctics(LinkedHashMap<Character, Character> corelation, String encriptedFile) {
         String encriptedTExt= readFileContent(encriptedFile);
         StringBuilder decriptedText = new StringBuilder();
         for (int i = 0; i < encriptedTExt.length(); i++)

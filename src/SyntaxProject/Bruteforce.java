@@ -1,3 +1,5 @@
+package SyntaxProject;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bruteforce {
-    public static int brutForceDecode(String encodedFile, int keyLength) {
+    public static int decriptFileByBrutforce(String encodedFile, int keyLength) {
         String tmpFileName = System.getProperty("user.dir") + "\\tmp.txt";
         Map<Integer, Integer> statiscs = new HashMap<>();
         for (int i = -keyLength; i < keyLength ; i++) {

@@ -1,9 +1,15 @@
+package SyntaxProject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
+
+import static SyntaxProject.Bruteforce.decriptFileByBrutforce;
+import static SyntaxProject.DecriptByStatistics.decriptFileByStatisctics;
+import static SyntaxProject.Encript.encriptFileByKey;
 
 
 public class Main {
@@ -41,7 +47,7 @@ public class Main {
                     System.out.print("");
                     System.out.print("Введите ключ для шифрования: ");
                     key = Integer.parseInt(keypad.readLine());
-                    Encript.encriptFileByKey(inFilename, outFilename,key);
+                    encriptFileByKey(inFilename, outFilename,key);
                     System.out.println("Файл успешно зашифрован. Название файла: "+outFilename);
                     Thread.sleep(3000);
                     break;
@@ -62,7 +68,7 @@ public class Main {
                     System.out.print("");
                     System.out.print("Введите ключ для расшифрования: ");
                     key = Integer.parseInt(keypad.readLine());
-                    Encript.encriptFileByKey(inFilename, outFilename, -key);
+                    encriptFileByKey(inFilename, outFilename, -key);
                     System.out.println("Файл успешно pacшифрован. Название файла: "+outFilename);
                     Thread.sleep(3000);
                     break;
@@ -76,7 +82,7 @@ public class Main {
                     System.out.print("");
                     System.out.print("Введите длину ключа : ");
                     key = Integer.parseInt(keypad.readLine());
-                    int decodeKey =Bruteforce.brutForceDecode(inFilename,key);
+                    int decodeKey = decriptFileByBrutforce(inFilename,key);
                     if(decodeKey>0)
                         System.out.println("Файл успешно расшифрован методом брутфорс. Ключ шифрования: "+decodeKey);
                     else
@@ -102,7 +108,7 @@ public class Main {
                     statisticEncripted = DecriptByStatistics.sortMap(statisticEncripted);
                     LinkedHashMap<Character, Character> corelation = DecriptByStatistics.getChipher(statisticMostra, statisticEncripted);
                     //       System.out.println(corelation);
-                    DecriptByStatistics.decriptFile(corelation,inFilename);
+                    decriptFileByStatisctics(corelation,inFilename);
                 case "5":
                     break;
             }
