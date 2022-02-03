@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedHashMap;
+
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -82,6 +84,25 @@ public class Main {
                     Thread.sleep(3000);
                     break;
                 case "4":
+                    System.out.print("Введите путь к зашифрованому файлу: ");
+                    inFilename = formatPath(keypad.readLine());
+                    while (!(Files.isRegularFile(Path.of(inFilename)))){
+                        System.out.print("Ошибочный ввод. Введите правильный путь: ");
+                        inFilename = formatPath(keypad.readLine());
+                    }
+                    System.out.print("Введите путь к файлу для сбора статистики: ");
+                    String fileForStatisctiv = formatPath(keypad.readLine());
+                    while (!(Files.isRegularFile(Path.of(inFilename)))){
+                        System.out.print("Ошибочный ввод. Введите правильный путь: ");
+                        inFilename = formatPath(keypad.readLine());
+                    }
+                    LinkedHashMap<Character, Integer> statisticMostra = DecriptByStatistics.getStatisticsFile(fileForStatisctiv);
+                    statisticMostra = DecriptByStatistics.sortMap(statisticMostra);
+                    LinkedHashMap<Character, Integer> statisticEncripted = DecriptByStatistics.getStatisticsFile(inFilename);
+                    statisticEncripted = DecriptByStatistics.sortMap(statisticEncripted);
+                    LinkedHashMap<Character, Character> corelation = DecriptByStatistics.getChipher(statisticMostra, statisticEncripted);
+                    //       System.out.println(corelation);
+                    DecriptByStatistics.decriptFile(corelation,inFilename);
                 case "5":
                     break;
             }
